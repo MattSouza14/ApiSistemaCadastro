@@ -8,6 +8,8 @@ public class ApiSistemaCadastroApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ApiSistemaCadastroApplication.class, args);
+
+
 	}
 
 }
