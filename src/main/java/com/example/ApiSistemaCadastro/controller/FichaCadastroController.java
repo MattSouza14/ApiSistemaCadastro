@@ -4,9 +4,7 @@ import com.example.ApiSistemaCadastro.services.FichaCadastroServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,13 +21,40 @@ public class FichaCadastroController {
     public String teste(){
         return fichaCadastroServices.hello("Mateus");
     }
+    //Deixando em void os endpoint por enquanto que não tem os services
+    @GetMapping("/Listar/ListarFichas")
+    public void ListarFichas(){
+        return;
+    }
+    @GetMapping("/Listar/ListarUmaFicha")
+    public void ListarUmaFicha(){
+        return;
+    }
+    @PostMapping("/Cad/CadastrarFicha")
+    public void CadastrarFicha(){
+        return;
+    }
+    @PostMapping("/Login")
+    public void Login(){
+        return;
+    }
+    @PatchMapping("/Atualizar/AtulizarUmaFicha")
+    public void AtualizarFicha(){
+        return;
+    }
+    @DeleteMapping("/Del/DeletarFicha")
+    public void DeletarFicha(){
+        return;
+    }
+
+
 
     //Endpoints para cadastro de nova ficha
 //    @GetMapping("/V1/Cadastro")
     //Endpoint para listar cadastros
  //   @GetMapping("/V1/ListarCadastros")
     //Endpoint para excluir ficha
-//    @GetMapping("/V1/ExcluirCadastro")
+//    @DeleteMappingw("/V1/ExcluirCadastro")
     //Endpoint para alterar data ou toda a ficha
 
 }
