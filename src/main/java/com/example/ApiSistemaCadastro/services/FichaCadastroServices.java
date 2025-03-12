@@ -5,6 +5,9 @@ import com.example.ApiSistemaCadastro.repository.FichaCadastroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class FichaCadastroServices {
     @Autowired
@@ -14,9 +17,14 @@ public class FichaCadastroServices {
 //        return "Hello " + name;
 //    }
 
+    public List<FichaCadastroModel> listarFichas() {
+        return fichaCadastroRepository.findAll();
+    }
     public FichaCadastroModel cadastrarFicha(FichaCadastroModel ficha) {
         return fichaCadastroRepository.save(ficha);
     }
-
+    public Optional<FichaCadastroModel> buscarFichaPorEmail(String email) {
+        return fichaCadastroRepository.findByEmail(email);
+    }
 
 }

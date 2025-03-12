@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.util.List;
+import java.util.Optional;
+
 @RequestMapping
 @RestController
 public class FichaCadastroController {
@@ -24,12 +27,22 @@ public class FichaCadastroController {
 //    }
     //Deixando em void os endpoint por enquanto que não tem os services
     @GetMapping("/Listar/ListarFichas")
-    public void ListarFichas(){
-        return;
+    public ResponseEntity<List<FichaCadastroModel>> ListarFichas(){
+        try {
+            List<FichaCadastroModel>fichas = fichaCadastroServices.listarFichas();
+            return new ResponseEntity<>(fichas, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @GetMapping("/Listar/ListarUmaFicha")
-    public void ListarUmaFicha(){
-        return;
+    public ResponseEntity<FichaCadastroModel> ListarUmaFicha(@PathVariable String email){
+        try{
+            Optional<FichaCadastroModel> ficha = fichaCadastroServices.buscarFichaPorEmail(email);
+            return new ResponseEntity<>(ficha.get(), HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
     @PostMapping("/Cadastrar/CadastrarFicha")
     public ResponseEntity<FichaCadastroModel> CadastrarFicha(@RequestBody FichaCadastroModel ficha){
