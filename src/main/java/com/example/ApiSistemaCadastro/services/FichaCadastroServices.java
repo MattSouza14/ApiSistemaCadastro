@@ -26,5 +26,15 @@ public class FichaCadastroServices {
     public Optional<FichaCadastroModel> buscarFichaPorEmail(String email) {
         return fichaCadastroRepository.findByEmail(email);
     }
+    public String ExcluirFicha(String email) {
+        Optional<FichaCadastroModel> ficha = fichaCadastroRepository.findByEmail(email);
+        if(ficha.isPresent()) {
+            fichaCadastroRepository.delete(ficha.get());
+            return "Ficha deletada com sucesso";
+        }else {
+            return "Não foi possivel excluir a ficha";
+        }
+
+    }
 
 }

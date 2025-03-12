@@ -35,7 +35,7 @@ public class FichaCadastroController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @GetMapping("/Listar/ListarUmaFicha")
+    @GetMapping("/Listar/ListarUmaFicha/{email}")
     public ResponseEntity<FichaCadastroModel> ListarUmaFicha(@PathVariable String email){
         try{
             Optional<FichaCadastroModel> ficha = fichaCadastroServices.buscarFichaPorEmail(email);
@@ -62,9 +62,17 @@ public class FichaCadastroController {
     public void AtualizarFicha(){
         return;
     }
-    @DeleteMapping("/Deleletar/DeletarFicha")
-    public void DeletarFicha(){
-        return;
+    @DeleteMapping("/Deleletar/DeletarFicha/{email}")
+    public ResponseEntity<String> DeletarFicha(@PathVariable String email){
+        try{
+            String ficha = fichaCadastroServices.ExcluirFicha(email);
+            return new ResponseEntity<>(ficha, HttpStatus.OK);
+
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+
     }
 
 
