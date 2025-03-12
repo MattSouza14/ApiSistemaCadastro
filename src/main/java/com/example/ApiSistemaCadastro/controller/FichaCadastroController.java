@@ -1,5 +1,6 @@
 package com.example.ApiSistemaCadastro.controller;
 
+import com.example.ApiSistemaCadastro.model.FichaCadastroModel;
 import com.example.ApiSistemaCadastro.services.FichaCadastroServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -17,10 +18,10 @@ public class FichaCadastroController {
     @Autowired
     private FichaCadastroServices fichaCadastroServices;
 
-    @GetMapping("/Teste")
-    public String teste(){
-        return fichaCadastroServices.hello("Mateus");
-    }
+//    @GetMapping("/Teste")
+//    public String teste(){
+//        return fichaCadastroServices.hello("Mateus");
+//    }
     //Deixando em void os endpoint por enquanto que não tem os services
     @GetMapping("/Listar/ListarFichas")
     public void ListarFichas(){
@@ -30,19 +31,25 @@ public class FichaCadastroController {
     public void ListarUmaFicha(){
         return;
     }
-    @PostMapping("/Cad/CadastrarFicha")
-    public void CadastrarFicha(){
-        return;
+    @PostMapping("/Cadastrar/CadastrarFicha")
+    public ResponseEntity<FichaCadastroModel> CadastrarFicha(@RequestBody FichaCadastroModel ficha){
+        try{
+            FichaCadastroModel fichaCadastro = fichaCadastroServices.cadastrarFicha(ficha);
+            return ResponseEntity.status(HttpStatus.CREATED).body(fichaCadastro);
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+
+        }
     }
     @PostMapping("/Login")
     public void Login(){
         return;
     }
-    @PatchMapping("/Atualizar/AtulizarUmaFicha")
+    @PatchMapping("/Atualizar/AtualizarUmaFicha")
     public void AtualizarFicha(){
         return;
     }
-    @DeleteMapping("/Del/DeletarFicha")
+    @DeleteMapping("/Deleletar/DeletarFicha")
     public void DeletarFicha(){
         return;
     }
