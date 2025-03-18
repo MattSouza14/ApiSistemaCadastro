@@ -124,37 +124,9 @@ Esta API foi desenvolvida em Java com Spring Boot e MySQL para gerenciar as cred
 "Ficha deletada com sucesso para o email: joao.silva@empresa.com"
 ```
 
-## Como Executar o Projeto
-
 ### Pré-requisitos
 - **Java 17** ou superior.
 - **MySQL** instalado e configurado.
 - **Maven** instalado.
 
-### Passos para Execução
 
-1. **Clone o repositório:**
-```bash
-git clone https://github.com/seu-usuario/nome-do-repositorio.git
-cd nome-do-repositorio
-```
-
-2. **Configure o banco de dados:**
-   - Crie um banco de dados no MySQL chamado `ficha_cadastro`.
-   - Atualize as configurações do banco de dados no arquivo `application.properties`:
-
-```properties
-spring.datasource.url=jdbc:mysql://localhost:3306/nome-do-banco
-spring.datasource.username=seu-usuario
-spring.datasource.password=sua-senha
-spring.jpa.hibernate.ddl-auto=update
-```
-
-3. **Compile e execute o projeto:**
-```bash
-mvn clean install
-mvn spring-boot:run
-```
-
-4. **Acesse a API:**
-   - A API estará disponível em [http://localhost:8080](http://localhost:8080).
