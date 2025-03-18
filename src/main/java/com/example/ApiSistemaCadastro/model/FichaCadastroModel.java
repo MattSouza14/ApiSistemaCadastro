@@ -28,7 +28,8 @@ public class FichaCadastroModel implements Serializable {
 
     @Setter
     @Getter
-    @Column(name = "dataVencimento", nullable = false, unique = false)
+    @Column(name = "data_vencimento", nullable = false, unique = false)
     private LocalDate dataVencimento;
 
 }
+//CRUD CREATE-POST, READ-GET, UPDATE-POST, DELETE-DELETE

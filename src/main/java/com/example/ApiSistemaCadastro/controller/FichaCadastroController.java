@@ -59,11 +59,16 @@ public class FichaCadastroController {
     public void Login(){
         return;
     }
-    @PatchMapping("/Atualizar/AtualizarUmaFicha")
-    public void AtualizarFicha(){
-        return;
+    @PatchMapping("/Atualizar/AtualizarUmaFicha/{email}")
+    public ResponseEntity<String> AtualizarFicha(@PathVariable String email, @RequestBody FichaCadastroModel fichaAtualizada) {
+        try {
+            fichaCadastroServices.atualizarFicha(email, fichaAtualizada);
+            return ResponseEntity.ok("Ficha atualizada com sucesso para o email: " + email);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
-    @DeleteMapping("/Deleletar/DeletarFicha/{email}")
+    @DeleteMapping("/Deletar/DeletarFicha/{email}")
     public ResponseEntity<String> DeletarFicha(@PathVariable String email){
         try{
             String ficha = fichaCadastroServices.ExcluirFicha(email);

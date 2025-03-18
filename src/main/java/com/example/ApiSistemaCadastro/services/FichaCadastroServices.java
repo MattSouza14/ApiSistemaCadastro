@@ -26,6 +26,21 @@ public class FichaCadastroServices {
     public Optional<FichaCadastroModel> buscarFichaPorEmail(String email) {
         return fichaCadastroRepository.findByEmail(email);
     }
+    public void atualizarFicha(String email, FichaCadastroModel fichaAtualizada) {
+        FichaCadastroModel fichaExistente = fichaCadastroRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Ficha não encontrada para o email: " + email));
+        if (fichaAtualizada.getEmail() != null){
+            fichaAtualizada.setEmail(fichaExistente.getEmail());
+        }
+        if (fichaAtualizada.getNome() != null) {
+            fichaExistente.setNome(fichaAtualizada.getNome());
+        }
+        if (fichaAtualizada.getDataVencimento() != null) {
+            fichaExistente.setDataVencimento(fichaAtualizada.getDataVencimento());
+        }
+
+        fichaCadastroRepository.save(fichaExistente);
+    }
     public String ExcluirFicha(String email) {
         Optional<FichaCadastroModel> ficha = fichaCadastroRepository.findByEmail(email);
         if(ficha.isPresent()) {
