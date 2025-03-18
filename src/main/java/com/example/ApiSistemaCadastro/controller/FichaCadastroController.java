@@ -3,13 +3,11 @@ package com.example.ApiSistemaCadastro.controller;
 import com.example.ApiSistemaCadastro.model.FichaCadastroModel;
 import com.example.ApiSistemaCadastro.services.FichaCadastroServices;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,7 +23,7 @@ public class FichaCadastroController {
 //    public String teste(){
 //        return fichaCadastroServices.hello("Mateus");
 //    }
-    //Deixando em void os endpoint por enquanto que não tem os services
+
     @GetMapping("/Listar/ListarFichas")
     public ResponseEntity<List<FichaCadastroModel>> ListarFichas(){
         try {
@@ -45,13 +43,16 @@ public class FichaCadastroController {
         }
     }
     @PostMapping("/Cadastrar/CadastrarFicha")
-    public ResponseEntity<FichaCadastroModel> CadastrarFicha(@RequestBody FichaCadastroModel ficha){
+    public ResponseEntity<String> CadastrarFicha(@RequestBody FichaCadastroModel ficha) throws IOException {
         try{
             FichaCadastroModel fichaCadastro = fichaCadastroServices.cadastrarFicha(ficha);
-            return ResponseEntity.status(HttpStatus.CREATED).body(fichaCadastro);
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-
+            return ResponseEntity.status(HttpStatus.CREATED).body("Nome: "+fichaCadastro.getNome() + "\n"
+            + "Email: "+fichaCadastro.getEmail() + "\n"
+            + "Data De Vencimento: "+fichaCadastro.getDataVencimento() + "\n"    );
+        }catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Erro ao cadastrar ficha");
+        } catch (Throwable e) {
+            throw new RuntimeException(e);
         }
     }
     @PostMapping("/Login")

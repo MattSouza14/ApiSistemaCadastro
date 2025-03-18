@@ -6,28 +6,29 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "ficha")
 public class FichaCadastroModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Setter
     @Getter
-    @Column(nullable = false, length = 200)
+    @Column(name="nome", nullable = false, length = 200)
     private String nome;
 
     @Setter
     @Getter
-    @Column(nullable = false, unique = true , length = 200)
+    @Column(name = "email",nullable = false, unique = true , length = 200)
     private String email;
 
     @Setter
     @Getter
-    @Column(nullable = false, unique = true, length = 200)
+    @Column(name = "dataVencimento", nullable = false, unique = false)
     private LocalDate dataVencimento;
 
 }
