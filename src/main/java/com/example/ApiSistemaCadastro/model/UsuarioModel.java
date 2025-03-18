@@ -31,4 +31,10 @@ public class UsuarioModel implements Serializable {
     @JoinColumn(name = "id_credenciais", nullable = false)
     private CredenciasModel credenciais;
 
+    @Getter
+    @Setter
+    @ManyToOne
+    @JoinColumn(name = "id_ficha_cadastro", nullable = false)
+    private FichaCadastroModel fichaCadastro;
+
 }

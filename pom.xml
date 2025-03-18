@@ -82,6 +82,7 @@
 							<artifactId>lombok</artifactId>
 						</path>
 					</annotationProcessorPaths>
+
 				</configuration>
 			</plugin>
 			<plugin>
@@ -94,6 +95,14 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>3.4.3</version>
+				<configuration>
+					<mainClass>com.example.ApiSistemaCadastro.ApiSistemaCadastroApplication</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
