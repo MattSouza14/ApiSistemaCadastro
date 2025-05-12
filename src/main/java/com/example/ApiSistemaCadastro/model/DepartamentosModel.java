@@ -11,8 +11,8 @@ import java.io.Serializable;
 public class DepartamentosModel implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Setter
     @Getter

@@ -12,7 +12,7 @@ import java.io.Serializable;
 public class UsuarioModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Setter
     @Getter
@@ -45,6 +45,6 @@ public class UsuarioModel implements Serializable {
     @Setter
     @ManyToOne
     @JoinColumn(name = "licencas_office_id", nullable = false)
-    private LicencaOfficeModel licencas_office;
+    private LicencaOfficeModel licencasOffice;
 
 }

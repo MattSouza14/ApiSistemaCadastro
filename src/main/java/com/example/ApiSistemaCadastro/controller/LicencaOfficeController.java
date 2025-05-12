@@ -43,9 +43,9 @@ public class LicencaOfficeController {
         }
     }
     @PostMapping("/Cadastrar/CadastrarFicha")
-    public ResponseEntity<String> CadastrarFicha(@RequestBody LicencaOfficeModel ficha) throws IOException {
+    public ResponseEntity<String> CadastrarLicenca(@RequestBody LicencaOfficeModel ficha) throws IOException {
         try{
-            LicencaOfficeModel fichaCadastro = fichaCadastroServices.cadastrarFicha(ficha);
+            LicencaOfficeModel fichaCadastro = fichaCadastroServices.cadastrarLicenca(ficha);
             return ResponseEntity.status(HttpStatus.CREATED).body("Nome: "+fichaCadastro.getNome() + "\n"
             + "Email: "+fichaCadastro.getEmail() + "\n"
             + "Data De Vencimento: "+fichaCadastro.getDataVencimento() + "\n"    );
@@ -59,6 +59,8 @@ public class LicencaOfficeController {
     public void Login(){
         return;
     }
+
+
     @PatchMapping("/Atualizar/AtualizarUmaFicha/{email}")
     public ResponseEntity<String> AtualizarFicha(@PathVariable String email, @RequestBody LicencaOfficeModel fichaAtualizada) {
         try {

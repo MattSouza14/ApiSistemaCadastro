@@ -20,7 +20,7 @@ public class FichaCadastroServices {
     public List<LicencaOfficeModel> listarFichas() {
         return fichaCadastroRepository.findAll();
     }
-    public LicencaOfficeModel cadastrarFicha(LicencaOfficeModel ficha) {
+    public LicencaOfficeModel cadastrarLicenca(LicencaOfficeModel ficha) {
         return fichaCadastroRepository.save(ficha);
     }
     public Optional<LicencaOfficeModel> buscarFichaPorEmail(String email) {

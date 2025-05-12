@@ -11,7 +11,7 @@ public class CredenciasModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private Long id;
 
     @Setter
     @Getter

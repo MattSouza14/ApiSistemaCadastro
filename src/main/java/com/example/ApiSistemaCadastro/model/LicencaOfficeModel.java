@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.io.Serializable;
+import java.sql.Date;
 import java.time.LocalDate;
 
 @Entity
@@ -34,6 +35,6 @@ public class LicencaOfficeModel implements Serializable {
     @Setter
     @Getter
     @Column(name = "data_expiracao", nullable = false)
-    private LocalDate dataVencimento;
+    private Date dataVencimento;
 
 }
