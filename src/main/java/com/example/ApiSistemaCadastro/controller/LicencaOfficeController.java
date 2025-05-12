@@ -1,6 +1,6 @@
 package com.example.ApiSistemaCadastro.controller;
 
-import com.example.ApiSistemaCadastro.model.FichaCadastroModel;
+import com.example.ApiSistemaCadastro.model.LicencaOfficeModel;
 import com.example.ApiSistemaCadastro.services.FichaCadastroServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RequestMapping
 @RestController
-public class FichaCadastroController {
+public class LicencaOfficeController {
 
 
     @Autowired
@@ -25,27 +25,27 @@ public class FichaCadastroController {
 //    }
 
     @GetMapping("/Listar/ListarFichas")
-    public ResponseEntity<List<FichaCadastroModel>> ListarFichas(){
+    public ResponseEntity<List<LicencaOfficeModel>> ListarFichas(){
         try {
-            List<FichaCadastroModel>fichas = fichaCadastroServices.listarFichas();
+            List<LicencaOfficeModel>fichas = fichaCadastroServices.listarFichas();
             return new ResponseEntity<>(fichas, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     @GetMapping("/Listar/ListarUmaFicha/{email}")
-    public ResponseEntity<FichaCadastroModel> ListarUmaFicha(@PathVariable String email){
+    public ResponseEntity<LicencaOfficeModel> ListarUmaFicha(@PathVariable String email){
         try{
-            Optional<FichaCadastroModel> ficha = fichaCadastroServices.buscarFichaPorEmail(email);
+            Optional<LicencaOfficeModel> ficha = fichaCadastroServices.buscarFichaPorEmail(email);
             return new ResponseEntity<>(ficha.get(), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
     @PostMapping("/Cadastrar/CadastrarFicha")
-    public ResponseEntity<String> CadastrarFicha(@RequestBody FichaCadastroModel ficha) throws IOException {
+    public ResponseEntity<String> CadastrarFicha(@RequestBody LicencaOfficeModel ficha) throws IOException {
         try{
-            FichaCadastroModel fichaCadastro = fichaCadastroServices.cadastrarFicha(ficha);
+            LicencaOfficeModel fichaCadastro = fichaCadastroServices.cadastrarFicha(ficha);
             return ResponseEntity.status(HttpStatus.CREATED).body("Nome: "+fichaCadastro.getNome() + "\n"
             + "Email: "+fichaCadastro.getEmail() + "\n"
             + "Data De Vencimento: "+fichaCadastro.getDataVencimento() + "\n"    );
@@ -60,7 +60,7 @@ public class FichaCadastroController {
         return;
     }
     @PatchMapping("/Atualizar/AtualizarUmaFicha/{email}")
-    public ResponseEntity<String> AtualizarFicha(@PathVariable String email, @RequestBody FichaCadastroModel fichaAtualizada) {
+    public ResponseEntity<String> AtualizarFicha(@PathVariable String email, @RequestBody LicencaOfficeModel fichaAtualizada) {
         try {
             fichaCadastroServices.atualizarFicha(email, fichaAtualizada);
             return ResponseEntity.ok("Ficha atualizada com sucesso para o email: " + email);

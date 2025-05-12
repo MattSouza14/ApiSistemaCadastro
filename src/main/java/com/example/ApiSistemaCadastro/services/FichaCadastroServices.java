@@ -1,7 +1,7 @@
 package com.example.ApiSistemaCadastro.services;
 
-import com.example.ApiSistemaCadastro.model.FichaCadastroModel;
-import com.example.ApiSistemaCadastro.repository.FichaCadastroRepository;
+import com.example.ApiSistemaCadastro.model.LicencaOfficeModel;
+import com.example.ApiSistemaCadastro.repository.LicencaOfficeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,23 +11,23 @@ import java.util.Optional;
 @Service
 public class FichaCadastroServices {
     @Autowired
-    private FichaCadastroRepository fichaCadastroRepository;
+    private LicencaOfficeRepository fichaCadastroRepository;
 
 //    public String hello(String name) {
 //        return "Hello " + name;
 //    }
 
-    public List<FichaCadastroModel> listarFichas() {
+    public List<LicencaOfficeModel> listarFichas() {
         return fichaCadastroRepository.findAll();
     }
-    public FichaCadastroModel cadastrarFicha(FichaCadastroModel ficha) {
+    public LicencaOfficeModel cadastrarFicha(LicencaOfficeModel ficha) {
         return fichaCadastroRepository.save(ficha);
     }
-    public Optional<FichaCadastroModel> buscarFichaPorEmail(String email) {
+    public Optional<LicencaOfficeModel> buscarFichaPorEmail(String email) {
         return fichaCadastroRepository.findByEmail(email);
     }
-    public void atualizarFicha(String email, FichaCadastroModel fichaAtualizada) {
-        FichaCadastroModel fichaExistente = fichaCadastroRepository.findByEmail(email)
+    public void atualizarFicha(String email, LicencaOfficeModel fichaAtualizada) {
+        LicencaOfficeModel fichaExistente = fichaCadastroRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("Ficha não encontrada para o email: " + email));
         if (fichaAtualizada.getEmail() != null){
             fichaAtualizada.setEmail(fichaExistente.getEmail());
@@ -42,7 +42,7 @@ public class FichaCadastroServices {
         fichaCadastroRepository.save(fichaExistente);
     }
     public String ExcluirFicha(String email) {
-        Optional<FichaCadastroModel> ficha = fichaCadastroRepository.findByEmail(email);
+        Optional<LicencaOfficeModel> ficha = fichaCadastroRepository.findByEmail(email);
         if(ficha.isPresent()) {
             fichaCadastroRepository.delete(ficha.get());
             return "Ficha deletada com sucesso";

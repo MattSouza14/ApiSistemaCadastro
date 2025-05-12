@@ -16,7 +16,12 @@ public class DepartamentosModel implements Serializable {
 
     @Setter
     @Getter
-    @Column (nullable = false, unique = true, length = 150)
+    @Column (name = "nome", nullable = false, unique = true, length = 250)
     private String nome;
+
+    @Setter
+    @Getter
+    @Column (name = "descricao", nullable = false, length = 500)
+    private String descricao;
 
 }

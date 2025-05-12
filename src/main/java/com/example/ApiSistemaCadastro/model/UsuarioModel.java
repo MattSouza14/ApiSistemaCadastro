@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class UsuarioModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,25 +16,35 @@ public class UsuarioModel implements Serializable {
 
     @Setter
     @Getter
-    @Column(nullable = false, unique = true , length = 200)
+    @Column(name = "nome", nullable = false, unique = true , length = 200)
     private String nome;
 
     @Setter
     @Getter
+    @Column(name = "email", nullable = false, unique = true, length = 300)
+    private String email;
+
+    @Setter
+    @Getter
+    @Column(name = "login", nullable = false, unique = true, length = 150)
+    private String login;
+
+    @Setter
+    @Getter
+    @Column(name = "senha", nullable = false, length = 150)
+    private String senha;
+
+    @Setter
+    @Getter
     @ManyToOne
-    @JoinColumn(name = "id_departamento", nullable = false)
+    @JoinColumn(name = "departamento_id", nullable = false)
     private DepartamentosModel departamento;
 
-    @Setter
-    @Getter
-    @ManyToOne
-    @JoinColumn(name = "id_credenciais", nullable = false)
-    private CredenciasModel credenciais;
 
     @Getter
     @Setter
     @ManyToOne
-    @JoinColumn(name = "id_ficha_cadastro", nullable = false)
-    private FichaCadastroModel fichaCadastro;
+    @JoinColumn(name = "licencas_office_id", nullable = false)
+    private LicencaOfficeModel licencas_office;
 
 }

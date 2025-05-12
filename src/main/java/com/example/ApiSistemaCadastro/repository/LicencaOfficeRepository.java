@@ -1,19 +1,18 @@
 package com.example.ApiSistemaCadastro.repository;
 
 
-import com.example.ApiSistemaCadastro.model.FichaCadastroModel;
+import com.example.ApiSistemaCadastro.model.LicencaOfficeModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Repository
-public interface FichaCadastroRepository extends JpaRepository<FichaCadastroModel, Long> {
+public interface LicencaOfficeRepository extends JpaRepository<LicencaOfficeModel, Long> {
 
 //    default <S extends FichaCadastroModel> S saveAndFlush(S entity) {
 //        return null;
 //    }
 
-    Optional<FichaCadastroModel> findByEmail(String email);
+    Optional<LicencaOfficeModel> findByEmail(String email);
 }
