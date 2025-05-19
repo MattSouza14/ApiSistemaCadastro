@@ -34,17 +34,14 @@ public class UsuarioModel implements Serializable {
     @Column(name = "senha", nullable = false, length = 150)
     private String senha;
 
-    @Setter
-    @Getter
+
     @ManyToOne
     @JoinColumn(name = "departamento_id", nullable = false)
     private DepartamentosModel departamento;
 
 
-    @Getter
-    @Setter
     @ManyToOne
-    @JoinColumn(name = "licencas_office_id", nullable = false)
+    @JoinColumn(name = "licenca_office_id", nullable = false)
     private LicencaOfficeModel licencasOffice;
 
 }

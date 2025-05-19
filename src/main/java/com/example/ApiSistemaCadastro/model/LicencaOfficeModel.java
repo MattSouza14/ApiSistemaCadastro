@@ -35,6 +35,6 @@ public class LicencaOfficeModel implements Serializable {
     @Setter
     @Getter
     @Column(name = "data_expiracao", nullable = false)
-    private Date dataVencimento;
+    private LocalDate dataVencimento;
 
 }

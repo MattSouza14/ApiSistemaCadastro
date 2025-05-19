@@ -23,8 +23,8 @@ public class EquipamentosModel {
 
     @Getter
     @Setter
-    @Column(name = "disponivel", columnDefinition = "true")
-    private  boolean disponivel;
+    @Column(name = "disponivel", columnDefinition = "boolean default true")
+    private  boolean disponivel = true;
 
 
 
