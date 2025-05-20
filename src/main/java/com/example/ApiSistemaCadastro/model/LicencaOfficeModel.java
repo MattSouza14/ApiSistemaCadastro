@@ -1,5 +1,6 @@
 package com.example.ApiSistemaCadastro.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +36,7 @@ public class LicencaOfficeModel implements Serializable {
     @Setter
     @Getter
     @Column(name = "data_expiracao", nullable = false)
+    @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate dataVencimento;
 
 }
