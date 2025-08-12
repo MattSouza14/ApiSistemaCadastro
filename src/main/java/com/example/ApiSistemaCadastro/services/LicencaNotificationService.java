@@ -24,7 +24,7 @@ public class LicencaNotificationService {
         this.rabbitTemplate = rabbitTemplate;
     }
     //             seg min hrs dia mes
-    @Scheduled(cron = "0 0 12 20 * ?")
+    @Scheduled(cron = "0 0 9 * * ?")
     public void verificarLicencasProximasExpiracao() {
         LocalDate dataNotificacao = LocalDate.now().plusDays(DIAS_NOTIFICACAO);
 
